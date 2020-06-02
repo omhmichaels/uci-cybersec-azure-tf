@@ -1,12 +1,13 @@
-### GENERAL CONFIG ###
-# REGION
-location = "westus2"
-
+### CONFIGURABLE OPTIONS ###
 # RESOURCE GROUP NAME 
-resource_group_name = "somhm_awesome"
+#resource_group_name = ""
 
 # SSH SAFE IP's
-my_ip_address = ""
+#my_ip_address = ""
+
+# ADVANCED: BE CAREFUL IF CHANGING #
+# REGION
+location = "westus2"
 
 
 ### VIRTUAL NETWORK CONFIG ### 
@@ -21,19 +22,22 @@ subnet_hr         = ["10.0.2.0/24"]
 subnet_finance    = ["10.0.3.0/24"]
 
 
-#machine1_size="Standard_B1ls"
-machine1_size          = "Standard_B1s"
-machine1_name          = "Jump-Box-Provisioner"
-machine1_osdisk_type   = "Premium_LRS"
-machine1_adminusername = "red_team"
-public_key_path_vm1    = "~/.ssh/azure_terraform.pub"
-machine1_custom_data   = "$(base64 cloud_init.yml)"
+### VM: JUMPBOX ###
+## CONFIGURABLE OPTIONS ##
+vm1_root_user = "somhmone"
+vm1_name          = "somhmbox"
 
-#machine2_size="Standard_B1ls"
-machine2_size          = "Standard_B1s"
-machine2_name          = "DVWA-VM1"
-machine2_osdisk_type   = "Premium_LRS"
-machine2_adminusername = "red_team"
-public_key_path_vm2    = "~/.ssh/azure_terraform.pub"
-machine2_custom_data   = "$(base64 cloud_init.yml)"
+## ADVANCED: WARING CHANGE AT OWN RISK ##
+vm1_size          = "Standard_B1s"
+vm1_osdisk_type   = "Premium_LRS"
+vm1_public_key_path    = "~/.ssh/azure-jumpbox.pub"
+vm1_custom_data   = "$(base64 cloud_init.yml)"
+
+### VM: DVWA ###
+vm2_adminusername = "somhmone"
+vm2_name          = "dvwa"
+vm2_osdisk_type   = "Premium_LRS"
+vm2_size          = "Standard_B1s"
+vm2_public_key_path   = "~/.ssh/azure-dvwa.pub"
+vm2_custom_data   = "$(base64 cloud_init.yml)"
 

@@ -1,0 +1,388 @@
+[0m# azurerm_linux_virtual_machine.redteam-vm1:
+resource "azurerm_linux_virtual_machine" "redteam-vm1" {
+    [1m[0madmin_username[0m[0m                  = "somhmone"
+    [1m[0mallow_extension_operations[0m[0m      = true
+    [1m[0mcomputer_name[0m[0m                   = "somhmbox"
+    [1m[0mcustom_data[0m[0m                     = (sensitive value)
+    [1m[0mdisable_password_authentication[0m[0m = true
+    [1m[0mid[0m[0m                              = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Compute/virtualMachines/somhmbox"
+    [1m[0mlocation[0m[0m                        = "westus2"
+    [1m[0mmax_bid_price[0m[0m                   = -1
+    [1m[0mname[0m[0m                            = "somhmbox"
+    [1m[0mnetwork_interface_ids[0m[0m           = [
+        "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm1NIC",
+    ]
+    [1m[0mpriority[0m[0m                        = "Regular"
+    [1m[0mprivate_ip_address[0m[0m              = "10.0.0.4"
+    [1m[0mprivate_ip_addresses[0m[0m            = [
+        "10.0.0.4",
+    ]
+    [1m[0mprovision_vm_agent[0m[0m              = true
+    [1m[0mpublic_ip_address[0m[0m               = "52.183.62.38"
+    [1m[0mpublic_ip_addresses[0m[0m             = [
+        "52.183.62.38",
+    ]
+    [1m[0mresource_group_name[0m[0m             = "somhm_terra"
+    [1m[0msize[0m[0m                            = "Standard_B1s"
+    [1m[0mtags[0m[0m                            = {
+        "environment" = "Terraform Demo"
+    }
+    [1m[0mvirtual_machine_id[0m[0m              = "064564ba-f07e-43f6-84ed-949479f6ac8f"
+
+    admin_ssh_key {
+        [1m[0mpublic_key[0m[0m = <<~EOT
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC+U6q/Cmn5iaktuT2vtOuyrsBvBYA3Zq72yBRFh3gfpEYqDAY7Ynz92B3iQxFo4lcJgVEG6L7Si53H4Gem1l/AZkhAMyXhDCi6JpKR+X2YV7yXCza42y8ds47r9+CGDqil9RyCIwN4O5hA8YB6AD6fqvD2TSJAJ1Mb39XANhFu/tZJrSL68IPXM9+bx1M1kKvftAgCvlor4wY4a67My2s3Phu83tREr7ch0ZYcl/up73rjPAfHLR/z5q27tBKOcUSqghT5UJzJK7YmnwW73Pn5oBL+02mO2OA6ptqUxcqJgOnn1phDuQlh/wDISjLob61uH4FWqRA+vgrYKIGlD355ak25TXltIgxXT5LRlGeIq4LaAeJfwWGdiuUzqReNBH6SFodVtKpxZjEFWYebDzmjG/H5XuIXUb839lpxqBXAnV98MWWd7RmJQU9ludy2y7So/KW5dZlPaTxUnJP+DWK+DQU/E6yFYpTrjGAw6o0lUrOTzGive0RWmp294kEqVHSHiJCoCMhQAwq6Dr0eXNR8PpBhB5TFoglCDn267qXGVDqikuCIPRwaL9ymNWfYSlPNGZ1z3X6XCrF0/I8N9wFWrddm8+VkEpyasEBd8L3QCeqHxFDAojns0zvxeF4xMfFa6Of6fYWIoW7SM/8MEa38ifDMxvPdbMDnWLFkjTKXMw== joeblow@Kens-MBP.fios-router.home
+        EOT
+        [1m[0musername[0m[0m   = "somhmone"
+    }
+
+    os_disk {
+        [1m[0mcaching[0m[0m                   = "ReadWrite"
+        [1m[0mdisk_size_gb[0m[0m              = 30
+        [1m[0mname[0m[0m                      = "vm1-OsDisk"
+        [1m[0mstorage_account_type[0m[0m      = "Premium_LRS"
+        [1m[0mwrite_accelerator_enabled[0m[0m = false
+    }
+
+    source_image_reference {
+        [1m[0moffer[0m[0m     = "UbuntuServer"
+        [1m[0mpublisher[0m[0m = "Canonical"
+        [1m[0msku[0m[0m       = "18.04-LTS"
+        [1m[0mversion[0m[0m   = "latest"
+    }
+}
+
+# azurerm_linux_virtual_machine.redteam-vm2:
+resource "azurerm_linux_virtual_machine" "redteam-vm2" {
+    [1m[0madmin_username[0m[0m                  = "somhmone"
+    [1m[0mallow_extension_operations[0m[0m      = true
+    [1m[0mcomputer_name[0m[0m                   = "dvwa"
+    [1m[0mcustom_data[0m[0m                     = (sensitive value)
+    [1m[0mdisable_password_authentication[0m[0m = true
+    [1m[0mid[0m[0m                              = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Compute/virtualMachines/dvwa"
+    [1m[0mlocation[0m[0m                        = "westus2"
+    [1m[0mmax_bid_price[0m[0m                   = -1
+    [1m[0mname[0m[0m                            = "dvwa"
+    [1m[0mnetwork_interface_ids[0m[0m           = [
+        "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm2NIC",
+    ]
+    [1m[0mpriority[0m[0m                        = "Regular"
+    [1m[0mprivate_ip_address[0m[0m              = "10.0.0.6"
+    [1m[0mprivate_ip_addresses[0m[0m            = [
+        "10.0.0.6",
+    ]
+    [1m[0mprovision_vm_agent[0m[0m              = true
+    [1m[0mpublic_ip_addresses[0m[0m             = []
+    [1m[0mresource_group_name[0m[0m             = "somhm_terra"
+    [1m[0msize[0m[0m                            = "Standard_B1s"
+    [1m[0mtags[0m[0m                            = {
+        "environment" = "Terraform Demo"
+    }
+    [1m[0mvirtual_machine_id[0m[0m              = "2f450d9c-09cc-4e1b-89dc-58da52727b71"
+
+    admin_ssh_key {
+        [1m[0mpublic_key[0m[0m = <<~EOT
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDC++MXshGxlSOyMIgy3iAFA7/FX+Vk4bn0Q9JDLwsCisKjMrG1Zq1y31wFZuYpyRT2/JBCSnwCdvaBI39kZrchVad1JX3hOvF4as79ytgcTaowhG5z+mCgPdP5qv7gdMm+A5sEDi/c2P1G5GmpeeJar5iUfdqSK2UVcC/E0VgynqSHoeaLo3329EKr8uhoMj77/BSO07wcyuwGfhGoK64e2rqNOOybX0A5zz9LX9XH9lsI4NW085iEuF3ca70GbSaRKReuFcYM1QKRQAQURUrbnhNtN8czI1mWzSmtv7hNFNWnRZ8ohHWtbtn2Cz0IYdDE/y/faMBFip8oaGdE8DXHvPSyQtTNk+8d2Y/ZY0WT/g+z4BYbbZr4lKbeXzfuAP3luyD7cAxAKxuZnIQWqdBKgtnisQFSW9/DuMGhDhQERmioV3gbk7cMu+3vGHciShU/GCDBTISZDEO1HKdqXPuyAwg7OrekIa5idOCAbWb1pNjeVJOUyyggmuVvMPEE/peGG/KrsYhfxzoRPRbwOMEZTkd7tf35qxCmDP8zU35CcF0PnHgQiMzJoWvZ/JhJEURqNFslr0h5q5Sjixv5XK6YLxXclQOPtVgiArnpkOLP6lFigupcHdVoJwRgQw9wE6WEiLlGf7NfvbRu+jAg+wg0yqsvyP6ulzrGiAGP74x8cw== joeblow@Kens-MBP.fios-router.home
+        EOT
+        [1m[0musername[0m[0m   = "somhmone"
+    }
+
+    os_disk {
+        [1m[0mcaching[0m[0m                   = "ReadWrite"
+        [1m[0mdisk_size_gb[0m[0m              = 30
+        [1m[0mname[0m[0m                      = "vm2-OsDisk"
+        [1m[0mstorage_account_type[0m[0m      = "Premium_LRS"
+        [1m[0mwrite_accelerator_enabled[0m[0m = false
+    }
+
+    source_image_reference {
+        [1m[0moffer[0m[0m     = "UbuntuServer"
+        [1m[0mpublisher[0m[0m = "Canonical"
+        [1m[0msku[0m[0m       = "18.04-LTS"
+        [1m[0mversion[0m[0m   = "latest"
+    }
+}
+
+# azurerm_network_ddos_protection_plan.example:
+resource "azurerm_network_ddos_protection_plan" "example" {
+    [1m[0mid[0m[0m                  = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/ddosProtectionPlans/ddospplan1"
+    [1m[0mlocation[0m[0m            = "westus2"
+    [1m[0mname[0m[0m                = "ddospplan1"
+    [1m[0mresource_group_name[0m[0m = "somhm_terra"
+    [1m[0mvirtual_network_ids[0m[0m = []
+}
+
+# azurerm_network_interface.redteam-vm1-nic:
+resource "azurerm_network_interface" "redteam-vm1-nic" {
+    [1m[0mapplied_dns_servers[0m[0m           = []
+    [1m[0mdns_servers[0m[0m                   = []
+    [1m[0menable_accelerated_networking[0m[0m = false
+    [1m[0menable_ip_forwarding[0m[0m          = false
+    [1m[0mid[0m[0m                            = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm1NIC"
+    [1m[0minternal_dns_name_label[0m[0m       = "jumpbox"
+    [1m[0minternal_domain_name_suffix[0m[0m   = "nztjxur5hboulhzuru4rly35la.xx.internal.cloudapp.net"
+    [1m[0mlocation[0m[0m                      = "westus2"
+    [1m[0mname[0m[0m                          = "vm1NIC"
+    [1m[0mprivate_ip_address[0m[0m            = "10.0.0.4"
+    [1m[0mprivate_ip_addresses[0m[0m          = [
+        "10.0.0.4",
+    ]
+    [1m[0mresource_group_name[0m[0m           = "somhm_terra"
+    [1m[0mtags[0m[0m                          = {
+        "environment" = "Terraform Demo"
+    }
+
+    ip_configuration {
+        [1m[0mname[0m[0m                          = "vm1NicConfiguration"
+        [1m[0mprimary[0m[0m                       = true
+        [1m[0mprivate_ip_address[0m[0m            = "10.0.0.4"
+        [1m[0mprivate_ip_address_allocation[0m[0m = "Static"
+        [1m[0mprivate_ip_address_version[0m[0m    = "IPv4"
+        [1m[0mpublic_ip_address_id[0m[0m          = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1"
+        [1m[0msubnet_id[0m[0m                     = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/virtualNetworks/virtualNetworkRedTeam1/subnets/web_tier"
+    }
+}
+
+# azurerm_network_interface.redteam-vm2-nic:
+resource "azurerm_network_interface" "redteam-vm2-nic" {
+    [1m[0mapplied_dns_servers[0m[0m           = []
+    [1m[0mdns_servers[0m[0m                   = []
+    [1m[0menable_accelerated_networking[0m[0m = false
+    [1m[0menable_ip_forwarding[0m[0m          = false
+    [1m[0mid[0m[0m                            = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm2NIC"
+    [1m[0minternal_dns_name_label[0m[0m       = "dvwa-vm1"
+    [1m[0minternal_domain_name_suffix[0m[0m   = "nztjxur5hboulhzuru4rly35la.xx.internal.cloudapp.net"
+    [1m[0mlocation[0m[0m                      = "westus2"
+    [1m[0mname[0m[0m                          = "vm2NIC"
+    [1m[0mprivate_ip_address[0m[0m            = "10.0.0.6"
+    [1m[0mprivate_ip_addresses[0m[0m          = [
+        "10.0.0.6",
+    ]
+    [1m[0mresource_group_name[0m[0m           = "somhm_terra"
+    [1m[0mtags[0m[0m                          = {
+        "environment" = "Terraform Demo"
+    }
+
+    ip_configuration {
+        [1m[0mname[0m[0m                          = "vm2NicConfiguration"
+        [1m[0mprimary[0m[0m                       = true
+        [1m[0mprivate_ip_address[0m[0m            = "10.0.0.6"
+        [1m[0mprivate_ip_address_allocation[0m[0m = "Static"
+        [1m[0mprivate_ip_address_version[0m[0m    = "IPv4"
+        [1m[0msubnet_id[0m[0m                     = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/virtualNetworks/virtualNetworkRedTeam1/subnets/web_tier"
+    }
+}
+
+# azurerm_network_interface_security_group_association.redteam-vm1:
+resource "azurerm_network_interface_security_group_association" "redteam-vm1" {
+    [1m[0mid[0m[0m                        = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm1NIC|/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkSecurityGroups/RedTeamSecurityGroup"
+    [1m[0mnetwork_interface_id[0m[0m      = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm1NIC"
+    [1m[0mnetwork_security_group_id[0m[0m = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkSecurityGroups/RedTeamSecurityGroup"
+}
+
+# azurerm_network_interface_security_group_association.redteam-vm2:
+resource "azurerm_network_interface_security_group_association" "redteam-vm2" {
+    [1m[0mid[0m[0m                        = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm2NIC|/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkSecurityGroups/RedTeamSecurityGroup"
+    [1m[0mnetwork_interface_id[0m[0m      = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkInterfaces/vm2NIC"
+    [1m[0mnetwork_security_group_id[0m[0m = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkSecurityGroups/RedTeamSecurityGroup"
+}
+
+# azurerm_network_security_group.example:
+resource "azurerm_network_security_group" "example" {
+    [1m[0mid[0m[0m                  = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkSecurityGroups/acceptanceTestSecurityGroup1"
+    [1m[0mlocation[0m[0m            = "westus2"
+    [1m[0mname[0m[0m                = "acceptanceTestSecurityGroup1"
+    [1m[0mresource_group_name[0m[0m = "somhm_terra"
+    [1m[0msecurity_rule[0m[0m       = [
+        {
+            access                                     = "Deny"
+            description                                = "Blocks RDP from any source over port TCP/3389"
+            destination_address_prefix                 = "VirtualNetwork"
+            destination_address_prefixes               = []
+            destination_application_security_group_ids = []
+            destination_port_range                     = "3389"
+            destination_port_ranges                    = []
+            direction                                  = "Inbound"
+            name                                       = "deny_rdp"
+            priority                                   = 500
+            protocol                                   = "Tcp"
+            source_address_prefix                      = "*"
+            source_address_prefixes                    = []
+            source_application_security_group_ids      = []
+            source_port_range                          = "*"
+            source_port_ranges                         = []
+        },
+    ]
+}
+
+# azurerm_network_security_group.redteam-sg:
+resource "azurerm_network_security_group" "redteam-sg" {
+    [1m[0mid[0m[0m                  = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/networkSecurityGroups/RedTeamSecurityGroup"
+    [1m[0mlocation[0m[0m            = "westus2"
+    [1m[0mname[0m[0m                = "RedTeamSecurityGroup"
+    [1m[0mresource_group_name[0m[0m = "somhm_terra"
+    [1m[0msecurity_rule[0m[0m       = [
+        {
+            access                                     = "Allow"
+            description                                = "Allow SSH traffic."
+            destination_address_prefix                 = "*"
+            destination_address_prefixes               = []
+            destination_application_security_group_ids = []
+            destination_port_range                     = "22"
+            destination_port_ranges                    = []
+            direction                                  = "Inbound"
+            name                                       = "Allow-SSH"
+            priority                                   = 4095
+            protocol                                   = "TCP"
+            source_address_prefix                      = "47.148.134.65"
+            source_address_prefixes                    = []
+            source_application_security_group_ids      = []
+            source_port_range                          = "*"
+            source_port_ranges                         = []
+        },
+        {
+            access                                     = "Allow"
+            description                                = "Allow SSH traffic."
+            destination_address_prefix                 = "VirtualNetwork"
+            destination_address_prefixes               = []
+            destination_application_security_group_ids = []
+            destination_port_range                     = "22"
+            destination_port_ranges                    = []
+            direction                                  = "Inbound"
+            name                                       = "Allow-SSH-on-VNet"
+            priority                                   = 4094
+            protocol                                   = "TCP"
+            source_address_prefix                      = "VirtualNetwork"
+            source_address_prefixes                    = []
+            source_application_security_group_ids      = []
+            source_port_range                          = "*"
+            source_port_ranges                         = []
+        },
+        {
+            access                                     = "Deny"
+            description                                = "Deny all inbound traffic."
+            destination_address_prefix                 = "*"
+            destination_address_prefixes               = []
+            destination_application_security_group_ids = []
+            destination_port_range                     = "*"
+            destination_port_ranges                    = []
+            direction                                  = "Inbound"
+            name                                       = "Default-Deny"
+            priority                                   = 4096
+            protocol                                   = "*"
+            source_address_prefix                      = "*"
+            source_address_prefixes                    = []
+            source_application_security_group_ids      = []
+            source_port_range                          = "*"
+            source_port_ranges                         = []
+        },
+    ]
+}
+
+# azurerm_public_ip.redteamip:
+resource "azurerm_public_ip" "redteamip" {
+    [1m[0mallocation_method[0m[0m       = "Static"
+    [1m[0mid[0m[0m                      = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/publicIPAddresses/acceptanceTestPublicIp1"
+    [1m[0midle_timeout_in_minutes[0m[0m = 4
+    [1m[0mip_address[0m[0m              = "52.183.62.38"
+    [1m[0mip_version[0m[0m              = "IPv4"
+    [1m[0mlocation[0m[0m                = "westus2"
+    [1m[0mname[0m[0m                    = "acceptanceTestPublicIp1"
+    [1m[0mresource_group_name[0m[0m     = "somhm_terra"
+    [1m[0msku[0m[0m                     = "Basic"
+    [1m[0mtags[0m[0m                    = {
+        "environment" = "Production"
+    }
+}
+
+# azurerm_resource_group.rg:
+resource "azurerm_resource_group" "rg" {
+    [1m[0mid[0m[0m       = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra"
+    [1m[0mlocation[0m[0m = "westus2"
+    [1m[0mname[0m[0m     = "somhm_terra"
+}
+
+# azurerm_subnet.accounting:
+resource "azurerm_subnet" "accounting" {
+    [1m[0maddress_prefix[0m[0m                                 = "10.0.1.0/24"
+    [1m[0maddress_prefixes[0m[0m                               = [
+        "10.0.1.0/24",
+    ]
+    [1m[0menforce_private_link_endpoint_network_policies[0m[0m = false
+    [1m[0menforce_private_link_service_network_policies[0m[0m  = false
+    [1m[0mid[0m[0m                                             = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/virtualNetworks/virtualNetworkRedTeam1/subnets/accounting"
+    [1m[0mname[0m[0m                                           = "accounting"
+    [1m[0mresource_group_name[0m[0m                            = "somhm_terra"
+    [1m[0mvirtual_network_name[0m[0m                           = "virtualNetworkRedTeam1"
+}
+
+# azurerm_subnet.finance:
+resource "azurerm_subnet" "finance" {
+    [1m[0maddress_prefix[0m[0m                                 = "10.0.3.0/24"
+    [1m[0maddress_prefixes[0m[0m                               = [
+        "10.0.3.0/24",
+    ]
+    [1m[0menforce_private_link_endpoint_network_policies[0m[0m = false
+    [1m[0menforce_private_link_service_network_policies[0m[0m  = false
+    [1m[0mid[0m[0m                                             = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/virtualNetworks/virtualNetworkRedTeam1/subnets/finance"
+    [1m[0mname[0m[0m                                           = "finance"
+    [1m[0mresource_group_name[0m[0m                            = "somhm_terra"
+    [1m[0mvirtual_network_name[0m[0m                           = "virtualNetworkRedTeam1"
+}
+
+# azurerm_subnet.hr:
+resource "azurerm_subnet" "hr" {
+    [1m[0maddress_prefix[0m[0m                                 = "10.0.2.0/24"
+    [1m[0maddress_prefixes[0m[0m                               = [
+        "10.0.2.0/24",
+    ]
+    [1m[0menforce_private_link_endpoint_network_policies[0m[0m = false
+    [1m[0menforce_private_link_service_network_policies[0m[0m  = false
+    [1m[0mid[0m[0m                                             = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/virtualNetworks/virtualNetworkRedTeam1/subnets/hr"
+    [1m[0mname[0m[0m                                           = "hr"
+    [1m[0mresource_group_name[0m[0m                            = "somhm_terra"
+    [1m[0mvirtual_network_name[0m[0m                           = "virtualNetworkRedTeam1"
+}
+
+# azurerm_subnet.webtier:
+resource "azurerm_subnet" "webtier" {
+    [1m[0maddress_prefix[0m[0m                                 = "10.0.0.0/24"
+    [1m[0maddress_prefixes[0m[0m                               = [
+        "10.0.0.0/24",
+    ]
+    [1m[0menforce_private_link_endpoint_network_policies[0m[0m = false
+    [1m[0menforce_private_link_service_network_policies[0m[0m  = false
+    [1m[0mid[0m[0m                                             = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/virtualNetworks/virtualNetworkRedTeam1/subnets/web_tier"
+    [1m[0mname[0m[0m                                           = "web_tier"
+    [1m[0mresource_group_name[0m[0m                            = "somhm_terra"
+    [1m[0mvirtual_network_name[0m[0m                           = "virtualNetworkRedTeam1"
+}
+
+# azurerm_virtual_network.example:
+resource "azurerm_virtual_network" "example" {
+    [1m[0maddress_space[0m[0m       = [
+        "10.0.0.0/16",
+    ]
+    [1m[0mguid[0m[0m                = "d29b666e-383f-455d-9f34-8d3d15e3bf58"
+    [1m[0mid[0m[0m                  = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/virtualNetworks/virtualNetworkRedTeam1"
+    [1m[0mlocation[0m[0m            = "westus2"
+    [1m[0mname[0m[0m                = "virtualNetworkRedTeam1"
+    [1m[0mresource_group_name[0m[0m = "somhm_terra"
+    [1m[0msubnet[0m[0m              = []
+    [1m[0mtags[0m[0m                = {
+        "environment" = "Production"
+    }
+
+    ddos_protection_plan {
+        [1m[0menable[0m[0m = true
+        [1m[0mid[0m[0m     = "/subscriptions/5cda8fd5-5bd7-4edb-b634-c6a10d3817eb/resourceGroups/somhm_terra/providers/Microsoft.Network/ddosProtectionPlans/ddospplan1"
+    }
+}
+
+
+Outputs:
+
+admin_username = "somhmone"
+identity = []
+private_ip_address = "10.0.0.4"
+public_ip_address = "52.183.62.38"[0m[0m

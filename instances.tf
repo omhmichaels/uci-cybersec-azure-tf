@@ -44,17 +44,17 @@ resource "azurerm_network_interface_security_group_association" "redteam-vm1" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "redteam-vm1" {
-  name                  = var.machine1_name
+  name                  = var.vm1_name
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.redteam-vm1-nic.id]
-  size                  = var.machine1_size
+  size                  = var.vm1_size
   custom_data           = filebase64("files/cloud_init.yml")
 
   os_disk {
-    name                 = "machine1-OsDisk"
+    name                 = "vm1-OsDisk"
     caching              = "ReadWrite"
-    storage_account_type = var.machine1_osdisk_type
+    storage_account_type = var.vm1_osdisk_type
   }
 
   source_image_reference {
@@ -64,13 +64,13 @@ resource "azurerm_linux_virtual_machine" "redteam-vm1" {
     version   = "latest"
   }
 
-  computer_name                   = var.machine1_name
-  admin_username                  = var.machine1_adminusername
+  computer_name                   = var.vm1_name
+  admin_username                  = var.vm1_root_user
   disable_password_authentication = true
 
   admin_ssh_key {
-    username   = var.machine1_adminusername
-    public_key = file(var.public_key_path_vm1)
+    username   = var.vm1_root_user
+    public_key = file(var.vm1_public_key_path)
   }
 
   #  boot_diagnostics {
@@ -126,17 +126,17 @@ resource "azurerm_network_interface_security_group_association" "redteam-vm2" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "redteam-vm2" {
-  name                  = var.machine2_name
+  name                  = var.vm2_name
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.redteam-vm2-nic.id]
-  size                  = var.machine1_size
+  size                  = var.vm1_size
   custom_data           = filebase64("files/dvwa_install.yml")
 
   os_disk {
-    name                 = "machine2-OsDisk"
+    name                 = "vm2-OsDisk"
     caching              = "ReadWrite"
-    storage_account_type = var.machine1_osdisk_type
+    storage_account_type = var.vm1_osdisk_type
   }
 
   source_image_reference {
@@ -146,13 +146,13 @@ resource "azurerm_linux_virtual_machine" "redteam-vm2" {
     version   = "latest"
   }
 
-  computer_name                   = var.machine2_name
-  admin_username                  = var.machine2_adminusername
+  computer_name                   = var.vm2_name
+  admin_username                  = var.vm2_adminusername
   disable_password_authentication = true
 
   admin_ssh_key {
-    username   = var.machine2_adminusername
-    public_key = file(var.public_key_path_vm2)
+    username   = var.vm2_adminusername
+    public_key = file(var.vm2_public_key_path)
   }
 
   #  boot_diagnostics {
