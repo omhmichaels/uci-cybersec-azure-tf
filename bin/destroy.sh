@@ -1,6 +1,5 @@
 #!/bin/bash
 # Author: Michael Martin mmartin@omhm.org
-PLAN_NAME=$1;
 
 function remove_hostkeys(){
     # Remove from agent 
