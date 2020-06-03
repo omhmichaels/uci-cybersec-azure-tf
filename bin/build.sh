@@ -1,9 +1,8 @@
 #!/bin/bash
 # Author: Michael Martin mmartin@omhm.org
 PLAN_NAME=${1:-"tf_plan"}
-TF_OUTPUT_PATH="plans/${PLAN_NAME}"
-TF_PREBUILD_PLANOUT="${TF_OUTPUT_PATH}-PREBUILD"
-TF_LIVE_PLANOUT="${TF_OUTPUT_PATH}-LIVE" 
+TF_PREBUILD_PLANOUT="plans/${PLAN_NAME}-PREBUILD"
+TF_LIVE_PLANOUT="plans/${PLAN_NAME}-LIVE"
 
 #### BUILD #####
 function build(){
