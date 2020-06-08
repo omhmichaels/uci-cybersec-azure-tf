@@ -16,12 +16,16 @@
 
 ***CHANGE PERMS FOR SCRIPTS***
 ```
-    chmod 755 bin/build.sh
-    chmod 755 bin/destroy.sh
+    chmod -R 755  bin/
+
 ``` 
 
 ***BUILD***
 ```
+    ```
+    # Try to run macos style if not use foolproof method :p
+    bin/prebuild.sh || sudo -H -u ${USER} bash bin/build.sh
+    
     # Try to run macos style if not use foolproof method :p
     bin/build.sh || sudo -H -u ${USER} bash bin/build.sh
 ```
